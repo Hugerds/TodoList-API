@@ -2,6 +2,14 @@
    "name": "todo-list",
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
+   "main": "index.js",
+   "module": "commonjs",
+   "scripts": {
+      "build": "tsc --target ES5 --experimentalDecorators --emitDecoratorMetadata",
+      "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+      "start": "node dist index.js",
+      "postinstall": "npm run build"
+   },
    "devDependencies": {
       "@types/bcryptjs": "^2.4.2",
       "@types/cors": "^2.8.12",
@@ -9,7 +17,7 @@
       "@types/jsonwebtoken": "^8.5.8",
       "@types/node": "^8.0.29",
       "ts-node": "3.3.0",
-      "typescript": "3.3.3333"
+      "typescript": "^4.5.5"
    },
    "dependencies": {
       "bcryptjs": "^2.4.3",
@@ -22,13 +30,7 @@
       "ts-node-dev": "^1.1.8",
       "typeorm": "0.2.41"
    },
-   "scripts": {
-     "build": "tsc --target ES5 --experimentalDecorators --emitDecoratorMetadata",
-     "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
-     "start":"node dist index.js",
-     "postinstall": "npm run build"
-   },
    "engines": {
-     "node": "6.11.1"
+      "node": "16.3.0"
    }
 }

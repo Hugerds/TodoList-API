@@ -6,5 +6,5 @@ module.exports = {
 	"password": process.env.TYPEORM_PASSWORD,
 	"database": process.env.TYPEORM_USERNAME,
 	synchronize: true,
-	"entities": ["dist/models/*.js"],
+	"entities": ["dist/App/Models/*.js"]
 };

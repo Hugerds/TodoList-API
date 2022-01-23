@@ -24,13 +24,14 @@ class TaskRepository extends Repository<Task> {
         return taskProps;
     }
 
-    async completeTask(id: string) : Promise<boolean> {
+    async completeTask(id: string) : Promise<Task> {
         const task = await this.getTaskById(id);
-        task.completed = true;
-        const updateTask = await this.updateTask(task);
+        task.completed = !task.completed;
+        const newTask = this.create(task);
+        const updateTask = await this.updateTask(newTask);
         if(!updateTask)
-            return false;
-        return true;
+            return undefined;
+        return newTask;
     }
 
     async deleteTask(id: string) : Promise<boolean> {

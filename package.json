@@ -5,6 +5,7 @@
    "devDependencies": {
       "@types/bcryptjs": "^2.4.2",
       "@types/cors": "^2.8.12",
+      "@types/express": "^4.17.13",
       "@types/jsonwebtoken": "^8.5.8",
       "@types/node": "^8.0.29",
       "ts-node": "3.3.0",
@@ -22,9 +23,9 @@
       "typeorm": "0.2.41"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
-      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
-      "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
-      "migrate": "typeorm migrations:generate -n"
+     "build": "tsc --target ES5 --experimentalDecorators --emitDecoratorMetadata",
+     "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+     "start":"node dist index.js",
+     "postinstall": "npm run build"
    }
 }

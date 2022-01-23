@@ -29,13 +29,11 @@ taskRouter.post(`${path}`, authMiddleware, asyncHandler(async (request, response
     
 }));
 
-taskRouter.put(`${path}`, authMiddleware, asyncHandler(async (request, response) => {
+taskRouter.post(`${path}/completeTask`, authMiddleware, asyncHandler(async (request, response) => {
     const task : Partial<Task> = {
-        title: request.body.title as string,
         completed: request.body.completed as boolean,
         id: request.body.id as string,
     };
-    task.excluido = false;
     const taskRepository = getCustomRepository(TaskRepository);
     const save = await taskRepository.completeTask(task.id);
     response.json(save);
